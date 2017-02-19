@@ -16,41 +16,42 @@ public class NextDate {
 
         System.out.println("Введите день:");
         int day = Input.nextByte();
-        System.out.println("Вывод следующей даты будет доступен позже, а покуда можно увидеть только текущую дату :)");
-        System.out.println("День " + day + "  Месяц  " + month + " Год "+ year);
+        //System.out.println("Вывод следующей даты будет доступен позже, а покуда можно увидеть только текущую дату :)");
+        //System.out.println("День " + day + "  Месяц  " + month + " Год " + year);
 
+        formatDate(day, month, year);
     }
 
-// у меня был план как это сделать, но что-то пошло не так..
-/*    public static int formatDate(int day, int month, int year) {
+    public static int formatDate(int day, int month, int year) {
         //add check year
+        boolean LeapYear=true;
+        boolean days29=true;
+        boolean days31=true;
         if ((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0)) {
-            boolean LeapYear = true;
-        } else {
-            boolean LeapYear = false;
+            LeapYear = true;
+        } else { LeapYear =false};
 
-//add check month
-            if (LeapYear == true && month == 2) {
-                System.out.println("Висакосный год, февраль");
+
+
+            switch (month) {
+                case 2:
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    days31 = false;
+                    days29 = false;
+                    break;
+                default:
+                    days31 = true;
             }
-            {
-                switch (month) {
-                    case 2:
-                    case 4:
-                    case 6:
-                    case 9:
-                    case 11:
-                        boolean days31 = false;
-                        boolean days29 = false;
-                        break;
-                    default:
-                        days31 = true;
-                }
-            }
-
-
+            System.out.println("Год висакосный?" + LeapYear);
+            System.out.println("В феврале 29 дней?" +days29);
+            System.out.println("В этом месяце 31 день?" +days31);
         }
 
 
-    }*/
+
+        return 0;
+    }
 }
