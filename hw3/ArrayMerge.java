@@ -23,16 +23,18 @@ public class ArrayMerge {
         int i = 0;
 
         while (i < arrayMerge.length) {
-            arrayMerge[i] = arrayFirst[firstIndex] < arraySecond[secondIndex] ? arrayFirst[firstIndex++] : arraySecond[secondIndex++];
-            if (firstIndex == arrayFirst.length) {
-                System.arraycopy(arraySecond, secondIndex, arrayMerge, ++i, arraySecond.length - secondIndex);
-                break;
+
+            if (firstIndex != arrayFirst.length) {
+                arrayMerge[i] = arrayFirst[firstIndex];
+                i++;
+                firstIndex++;
             }
-            if (secondIndex == arraySecond.length) {
-                System.arraycopy(arrayFirst, firstIndex, arrayMerge, ++i, arrayFirst.length - firstIndex);
-                break;
+            if (secondIndex != arraySecond.length) {
+                arrayMerge[i] = arraySecond[secondIndex];
+                i++;
+                secondIndex++;
             }
-            i++;
+
         }
         return arrayMerge;
     }
