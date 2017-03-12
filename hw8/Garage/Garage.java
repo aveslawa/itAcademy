@@ -15,14 +15,24 @@ public class Garage {
     }
 
     public void exitForTheCar(Car type, Integer pcs) {
-        garageResult.put(type, garageResult.containsKey(type) ? garageResult.get(type) - pcs : -pcs);
+        if (pcs >= garageResult.get(type)) {
+            garageResult.remove(type);
+        } else {
+            garageResult.put(type, garageResult.containsKey(type) ? garageResult.get(type) - pcs : -pcs);
+        }
     }
+
 
     public void getTypeCar(Car type) {
-        System.out.println(type.toString() + " находится в гараже в количестве  " + garageResult.get(type) + " шт.");
-    }
+        if (garageResult.get(type) == null) {
+            System.out.println("Указанных машин нету в этом гараже");
+        } else {
+            System.out.println(type.toString() + " находится в гараже в количестве  " + garageResult.get(type) + " шт.");
+        }
 
+    }
 }
+
 
 
 
